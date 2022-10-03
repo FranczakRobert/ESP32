@@ -1,0 +1,27 @@
+[1/11] Performing build step for 'bootloader'
+[1/1] cd /Users/robertfranczak/Code/ESP32/ESP/build/bootloader/esp-idf/esptool_py && /Users/robertfranczak/.espressif/python_env/idf5.1_py3.10_env/bin/python /Users/robertfranczak/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /Users/robertfranczak/Code/ESP32/ESP/build/bootloader/bootloader.bin
+Bootloader binary size 0x66c0 bytes. 0x940 bytes (8%) free.
+[2/9] Building CXX object esp-idf/utils/CMakeFiles/__idf_utils.dir/Thread.cpp.obj
+[3/9] Linking C static library esp-idf/utils/libutils.a
+[4/9] Building CXX object esp-idf/main/CMakeFiles/__idf_main.dir/Esp_main.cpp.obj
+In file included from /Users/robertfranczak/Code/ESP32/ESP/src/main/Esp_main.cpp:8:
+/Users/robertfranczak/Code/ESP32/ESP/src/drivers/includes/WifiDriver.hpp:21:16: warning: 's_retry_num' defined but not used [-Wunused-variable]
+   21 |     static int s_retry_num = 0;
+      |                ^~~~~~~~~~~
+/Users/robertfranczak/Code/ESP32/ESP/src/drivers/includes/WifiDriver.hpp:20:24: warning: 'TAG' defined but not used [-Wunused-variable]
+   20 |     static const char *TAG = "wifi station";
+      |                        ^~~
+/Users/robertfranczak/Code/ESP32/ESP/src/drivers/includes/WifiDriver.hpp:19:31: warning: 's_wifi_event_group' defined but not used [-Wunused-variable]
+   19 |     static EventGroupHandle_t s_wifi_event_group;
+      |                               ^~~~~~~~~~~~~~~~~~
+[5/9] Linking C static library esp-idf/main/libmain.a
+[6/9] Generating ld/sections.ld
+[7/9] Linking CXX executable ESP.elf
+[8/9] Generating binary image from built executable
+esptool.py v4.3
+Creating esp32 image...
+Merged 2 ELF sections
+Successfully created esp32 image.
+Generated /Users/robertfranczak/Code/ESP32/ESP/build/ESP.bin
+[9/9] cd /Users/robertfranczak/Code/ESP32/ESP/build/esp-idf/esptool_py && /Users/robertfranczak/.espressif/python_env/idf5.1_py3.10_env/bin/python /Users/robertfranczak/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /Users/robertfranczak/Code/ESP32/ESP/build/partition_table/partition-table.bin /Users/robertfranczak/Code/ESP32/ESP/build/ESP.bin
+ESP.bin binary size 0x2ca10 bytes. Smallest app partition is 0x100000 bytes. 0xd35f0 bytes (83%) free.

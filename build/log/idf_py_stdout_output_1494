@@ -1,0 +1,6 @@
+[0/1] Re-running CMake...
+-- Building ESP-IDF components for target esp32
+-- Configuring incomplete, errors occurred!
+See also "/Users/robertfranczak/Code/ESP32/ESP/build/CMakeFiles/CMakeOutput.log".
+FAILED: build.ninja 
+/Users/robertfranczak/.espressif/tools/cmake/3.24.0/CMake.app/Contents/bin/cmake --regenerate-during-build -S/Users/robertfranczak/Code/ESP32/ESP -B/Users/robertfranczak/Code/ESP32/ESP/build
