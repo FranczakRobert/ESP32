@@ -11,9 +11,8 @@ void* Thread::threadRoutine(void *arg)
 
             while (obj->isRunning)
             {
-                //obj->run();
-                printf("HI!\n");
-                sleep(1);
+                obj->run();
+                usleep(10000);
             }
     }
     else

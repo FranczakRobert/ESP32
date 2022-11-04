@@ -4,6 +4,7 @@
         "*.c": "c",
         "cstdio": "cpp",
         "mutex": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "thread": "cpp"
     }
 }

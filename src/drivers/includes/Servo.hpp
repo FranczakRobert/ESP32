@@ -4,20 +4,32 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "esp_log.h"
-#include "esp_attr.h"
-#include "esp_check.h"
-#include "esp_private/esp_clk.h"
-#include "ErrorCode.hpp"
-#include "esp_log.h"
-#include "mcpwm_prelude.h"
+#include "driver/mcpwm_prelude.h"
 
-class Servo
+#include "ErrorCode.hpp"
+#include "Thread.hpp"
+
+class Servo : public Thread
 {
+    mcpwm_timer_config_t  sTimer;
+    mcpwm_timer_handle_t  retTimer = NULL;
+
+    mcpwm_operator_config_t configOperator;
+    mcpwm_oper_handle_t retOper = NULL;
+
+    mcpwm_comparator_config_t configComperator;
+    mcpwm_cmpr_handle_t retCmpr = NULL;
+
+    mcpwm_generator_config_t configGenerator;
+    mcpwm_gen_handle_t retGen = NULL;
+    int angle = 0;
+    int step = 2;
+
 public:
     Servo();
     ~Servo();
-
-    void run();
+    ErrorCode init();
+    virtual void run();
     
 };
 

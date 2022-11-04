@@ -12,11 +12,11 @@ class Thread
     bool isCreated, isRunning;
 
     protected:
-    static void *threadRoutine(void *arg);
-    ErrorCode startThread();
-    ErrorCode stopThread();
+    static void* threadRoutine(void *arg);
 
     public:
+    ErrorCode startThread();
+    ErrorCode stopThread();
     virtual void run() = 0;
     Thread();
     ~Thread();

@@ -16,12 +16,7 @@ extern "C"
 
 void app_main(void)
 {
-    //WifiDriver wifi;
-    //Thread thread;
 
-    //wifi.startWifi();
-    Servo servo;
-    
     while (true)
     {
         usleep(10000);
