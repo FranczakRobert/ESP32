@@ -5,6 +5,13 @@
 #include "freertos/task.h"
 #include "esp_log.h"
 #include "driver/mcpwm_prelude.h"
+#include <stdio.h>
+#include <string.h>
+#include "esp_system.h"
+#include "esp_console.h"
+#include "esp_vfs_dev.h"
+#include "esp_vfs_fat.h"
+#include "driver/uart.h"
 
 #include "ErrorCode.hpp"
 #include "Thread.hpp"

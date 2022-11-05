@@ -64,6 +64,13 @@ ErrorCode Servo::init()
     ESP_ERROR_CHECK(mcpwm_timer_enable(retTimer));
     ESP_ERROR_CHECK(mcpwm_timer_start_stop(retTimer, MCPWM_TIMER_START_NO_STOP));
 
+    setvbuf(stdin, NULL, _IONBF, 0);
+    setvbuf(stdout, NULL, _IONBF, 0);
+    ESP_ERROR_CHECK(uart_driver_install(CONFIG_ESP_CONSOLE_UART_NUM, 256, 0, 0, NULL, 0));
+    esp_vfs_dev_uart_use_driver(CONFIG_ESP_CONSOLE_UART_NUM);
+    esp_vfs_dev_uart_port_set_rx_line_endings(CONFIG_ESP_CONSOLE_UART_NUM, ESP_LINE_ENDINGS_CR);
+    esp_vfs_dev_uart_port_set_tx_line_endings(CONFIG_ESP_CONSOLE_UART_NUM, ESP_LINE_ENDINGS_CRLF);
+
     return E_OK;
 }
 
@@ -73,8 +80,9 @@ void Servo::run()
     ESP_ERROR_CHECK(mcpwm_comparator_set_compare_value(retCmpr, example_angle_to_compare(angle)));
     //Add delay, since it takes time for servo to rotate, usually 200ms/60degree rotation under 5V power supply
     vTaskDelay(pdMS_TO_TICKS(10));
-    if ((angle + step) > 90 || (angle + step) < -90) {
-        step *= -1;
-    }
-    angle += step;
+    // if ((angle + step) > 90 || (angle + step) < -90) {
+    //     step *= -1;
+    // }
+    //  angle += step;
+    scanf("%d",&angle);
 }

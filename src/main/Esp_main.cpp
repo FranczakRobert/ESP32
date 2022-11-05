@@ -16,6 +16,7 @@ extern "C"
 
 void app_main(void)
 {
+    Servo s;
 
     while (true)
     {
