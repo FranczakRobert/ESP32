@@ -13,7 +13,6 @@ static const char *TAG = "Servo";
 
 Servo::Servo()
 {
-    printf("Hi! I'm SERVO! \n");
     init();
     startThread();
 };
@@ -85,4 +84,9 @@ void Servo::run()
     // }
     //  angle += step;
     scanf("%d",&angle);
+
+    if(angle > 90)
+        angle = 90;
+    else if(angle < -90)
+        angle = -90;
 }

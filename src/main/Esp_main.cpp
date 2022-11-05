@@ -16,7 +16,11 @@ extern "C"
 
 void app_main(void)
 {
-    Servo s;
+    WifiDriver wifi;
+    Servo servo;
+    sleep(5);
+    wifi.startWifi();
+
 
     while (true)
     {
