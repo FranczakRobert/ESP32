@@ -50,11 +50,11 @@ ErrorCode Servo::init()
     ESP_ERROR_CHECK(mcpwm_comparator_set_compare_value(retCmpr, example_angle_to_compare(0)));
 
     ESP_LOGI(TAG, "Set generator action on timer and compare event");
-    // go high on counter empty
+
     ESP_ERROR_CHECK(mcpwm_generator_set_actions_on_timer_event(retGen,
                     MCPWM_GEN_TIMER_EVENT_ACTION(MCPWM_TIMER_DIRECTION_UP, MCPWM_TIMER_EVENT_EMPTY, MCPWM_GEN_ACTION_HIGH),
                     MCPWM_GEN_TIMER_EVENT_ACTION_END()));
-    // go low on compare threshold
+
     ESP_ERROR_CHECK(mcpwm_generator_set_actions_on_compare_event(retGen,
                     MCPWM_GEN_COMPARE_EVENT_ACTION(MCPWM_TIMER_DIRECTION_UP, retCmpr, MCPWM_GEN_ACTION_LOW),
                     MCPWM_GEN_COMPARE_EVENT_ACTION_END()));
