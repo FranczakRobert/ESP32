@@ -1,6 +1,0 @@
-CMake Error at /Users/robertfranczak/.espressif/tools/cmake/3.24.0/CMake.app/Contents/share/cmake-3.24/Modules/FindThreads.cmake:66 (message):
-  FindThreads only works if either C or CXX language is enabled
-Call Stack (most recent call first):
-  CMakeLists.txt:10 (find_package)
-
-

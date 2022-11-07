@@ -8,6 +8,7 @@
 #include "WifiDriver.hpp"
 #include "Thread.hpp"
 #include "Servo.hpp"
+#include "Lcd.hpp"
 
 extern "C"
 {
@@ -16,11 +17,12 @@ extern "C"
 
 void app_main(void)
 {
-    WifiDriver wifi;
-    Servo servo;
-    sleep(5);
-    wifi.startWifi();
-
+    // WifiDriver wifi;
+    // Servo servo;
+    // sleep(5);
+    // wifi.startWifi();
+    Lcd lcd;
+    lcd.myDemo();
 
     while (true)
     {

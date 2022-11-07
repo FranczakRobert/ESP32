@@ -1,6 +1,7 @@
 set(COMPONENT_SRCS 
 "src/WifiDriver.cpp"
 "src/Servo.cpp"
+"src/Lcd.cpp"
 )
 
 set(COMPONENT_ADD_INCLUDEDIRS 
