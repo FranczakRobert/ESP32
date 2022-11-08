@@ -88,36 +88,8 @@ void Servo::run()
 {
     //ESP_LOGI(TAG, "Angle of rotation: %d", angle);
     ESP_ERROR_CHECK(mcpwm_comparator_set_compare_value(retCmpr, example_angle_to_compare(angle)));
-    //Add delay, since it takes time for servo to rotate, usually 200ms/60degree rotation under 5V power supply
-    vTaskDelay(pdMS_TO_TICKS(10));
-    // if ((angle + step) > 90 || (angle + step) < -90) {
-    //     step *= -1;
-    // }
-    //  angle += step;
-    // scanf("%d",&angle);
-        
     int adc_value = adc1_get_raw(ADC1_CHANNEL_4);
-
-    if(adc_value == 0)
-    {
-        angle = -90;
-    }
-    else if(adc_value > 0 && adc_value < 3500)
-    {
-        angle = 0;
-    }
-    else if(adc_value > 3500 )
-    {
-        angle = 90;
-    }
-
-    printf("ADC Value: %d", adc_value);
-    printf("\n");
-    vTaskDelay(500/ portTICK_PERIOD_MS);
-
-    // if(angle > 90)
-    //     angle = 90;
-
-    // else if(angle < -90)
-    //     angle = -90;
+    adc_value = (adc_value/23) - 90;
+    angle = adc_value;
+    vTaskDelay(pdMS_TO_TICKS(10));
 }
