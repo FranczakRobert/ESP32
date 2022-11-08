@@ -10,10 +10,13 @@
 #define SERVO_MAX_DEGREE        90    // Maximum angle
 
 static const char *TAG = "Servo";
+static esp_adc_cal_characteristics_t adc1_chars;
 
 Servo::Servo()
 {
     init();
+    sleep(1);
+    initPotentiometer();
     startThread();
 };
 
@@ -73,9 +76,17 @@ ErrorCode Servo::init()
     return E_OK;
 }
 
+void Servo::initPotentiometer()
+{
+    esp_adc_cal_characterize(ADC_UNIT_1, ADC_ATTEN_DB_11, static_cast<adc_bits_width_t>(ADC_WIDTH_BIT_DEFAULT), 0, &adc1_chars);
+    adc1_config_width(static_cast<adc_bits_width_t>(ADC_WIDTH_BIT_DEFAULT));
+    adc1_config_channel_atten(ADC1_CHANNEL_4, ADC_ATTEN_DB_11);
+
+}
+
 void Servo::run()
 {
-    ESP_LOGI(TAG, "Angle of rotation: %d", angle);
+    //ESP_LOGI(TAG, "Angle of rotation: %d", angle);
     ESP_ERROR_CHECK(mcpwm_comparator_set_compare_value(retCmpr, example_angle_to_compare(angle)));
     //Add delay, since it takes time for servo to rotate, usually 200ms/60degree rotation under 5V power supply
     vTaskDelay(pdMS_TO_TICKS(10));
@@ -83,10 +94,30 @@ void Servo::run()
     //     step *= -1;
     // }
     //  angle += step;
-    scanf("%d",&angle);
+    // scanf("%d",&angle);
+        
+    int adc_value = adc1_get_raw(ADC1_CHANNEL_4);
 
-    if(angle > 90)
-        angle = 90;
-    else if(angle < -90)
+    if(adc_value == 0)
+    {
         angle = -90;
+    }
+    else if(adc_value > 0 && adc_value < 3500)
+    {
+        angle = 0;
+    }
+    else if(adc_value > 3500 )
+    {
+        angle = 90;
+    }
+
+    printf("ADC Value: %d", adc_value);
+    printf("\n");
+    vTaskDelay(500/ portTICK_PERIOD_MS);
+
+    // if(angle > 90)
+    //     angle = 90;
+
+    // else if(angle < -90)
+    //     angle = -90;
 }

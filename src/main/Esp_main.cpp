@@ -18,11 +18,11 @@ extern "C"
 void app_main(void)
 {
     // WifiDriver wifi;
-    // Servo servo;
+    Servo servo;
     // sleep(5);
     // wifi.startWifi();
-    Lcd lcd;
-    lcd.myDemo();
+    // Lcd lcd;
+    // lcd.myDemo();
 
     while (true)
     {

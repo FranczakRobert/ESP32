@@ -13,6 +13,9 @@
 #include "esp_vfs_fat.h"
 #include "driver/uart.h"
 
+#include "driver/adc.h"
+#include "esp_adc_cal.h"
+
 #include "ErrorCode.hpp"
 #include "Thread.hpp"
 
@@ -36,6 +39,7 @@ public:
     Servo();
     ~Servo();
     ErrorCode init();
+    void initPotentiometer();
     virtual void run();
     
 };
