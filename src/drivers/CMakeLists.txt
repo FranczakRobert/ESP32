@@ -2,6 +2,7 @@ set(COMPONENT_SRCS
 "src/WifiDriver.cpp"
 "src/Servo.cpp"
 "src/Lcd.cpp"
+"src/UltrasonicSensor.cpp"
 
 )
 
@@ -24,6 +25,7 @@ $ENV{IDF_PATH}/components/esp_adc/deprecated/include
 
 "includes"
 "../utils"
+"../externals"
 )
 
 register_component()

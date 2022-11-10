@@ -9,6 +9,7 @@
 #include "Thread.hpp"
 #include "Servo.hpp"
 #include "Lcd.hpp"
+#include "UltrasonicSensor.hpp"
 
 extern "C"
 {
@@ -18,11 +19,12 @@ extern "C"
 void app_main(void)
 {
     // WifiDriver wifi;
-    Servo servo;
+    // Servo servo;
     // sleep(5);
     // wifi.startWifi();
     // Lcd lcd;
     // lcd.myDemo();
+    
 
     while (true)
     {
