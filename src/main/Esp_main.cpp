@@ -19,11 +19,11 @@ extern "C"
 void app_main(void)
 {
     // WifiDriver wifi;
-    Servo servo;
-    sleep(3);
+    // Servo servo;
+    // sleep(3);
     //wifi.startWifi();
-    Lcd lcd;
-    lcd.myDemo();
+    // Lcd lcd;
+    // lcd.myDemo();
     //UltrasonicSensor ultrasonic;
 
     while (true)
