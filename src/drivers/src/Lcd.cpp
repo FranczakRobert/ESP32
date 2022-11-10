@@ -112,6 +112,7 @@ esp_err_t Lcd::i2c_master_init()
     conf.sda_pullup_en = GPIO_PULLUP_ENABLE;
     conf.scl_pullup_en = GPIO_PULLUP_ENABLE;
     conf.master.clk_speed = I2C_MASTER_FREQ_HZ;
+	conf.clk_flags = 0;
 
     i2c_param_config(I2C_NUM_0, &conf);
 
@@ -121,7 +122,7 @@ esp_err_t Lcd::i2c_master_init()
 void Lcd::myDemo()
 {
     lcd_put_cur(0,2);
-    lcd_send_string("Hello World!");
+    lcd_send_string("Hello Robert!");
     lcd_put_cur(1,3);
     lcd_send_string("From ESP32");
     lcd_put_cur(1,17);

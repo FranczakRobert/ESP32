@@ -5,6 +5,7 @@
         "cstdio": "cpp",
         "mutex": "cpp",
         "random": "cpp",
-        "thread": "cpp"
+        "thread": "cpp",
+        "*.inc": "cpp"
     }
 }
