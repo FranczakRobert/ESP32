@@ -121,7 +121,7 @@ esp_err_t Lcd::i2c_master_init()
 void Lcd::myDemo()
 {
     lcd_put_cur(0,2);
-    lcd_send_string("Hello World");
+    lcd_send_string("Hello World!");
     lcd_put_cur(1,3);
     lcd_send_string("From ESP32");
     lcd_put_cur(1,17);

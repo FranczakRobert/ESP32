@@ -2,7 +2,7 @@
 #include "esp_log.h"
 #define SERVO_TIMEBASE_RESOLUTION_HZ 1000000  // 1MHz, 1us per tick
 #define SERVO_TIMEBASE_PERIOD        20000    // 20000 ticks, 20ms
-#define SERVO_PIN 18
+#define SERVO_PIN 19
 
 #define SERVO_MIN_PULSEWIDTH_US 500  // Minimum pulse width in microsecond
 #define SERVO_MAX_PULSEWIDTH_US 2500  // Maximum pulse width in microsecond
@@ -91,5 +91,5 @@ void Servo::run()
     int adc_value = adc1_get_raw(ADC1_CHANNEL_4);
     adc_value = (adc_value/23) - 90;
     angle = adc_value;
-    vTaskDelay(pdMS_TO_TICKS(10));
+    vTaskDelay(pdMS_TO_TICKS(50));
 }
