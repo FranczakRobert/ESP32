@@ -44,9 +44,6 @@
 #include <driver/gpio.h>
 #include <esp_err.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 #define ESP_ERR_ULTRASONIC_PING         0x200
 #define ESP_ERR_ULTRASONIC_PING_TIMEOUT 0x201
@@ -83,19 +80,6 @@ esp_err_t ultrasonic_init(const ultrasonic_sensor_t *dev);
 esp_err_t ultrasonic_measure_raw(const ultrasonic_sensor_t *dev, uint32_t max_time_us, uint32_t *time_us);
 
 /**
- * @brief Measure distance in meters
- *
- * @param dev Pointer to the device descriptor
- * @param max_distance Maximal distance to measure, meters
- * @param[out] distance Distance in meters
- * @return `ESP_OK` on success, otherwise:
- *         - ::ESP_ERR_ULTRASONIC_PING         - Invalid state (previous ping is not ended)
- *         - ::ESP_ERR_ULTRASONIC_PING_TIMEOUT - Device is not responding
- *         - ::ESP_ERR_ULTRASONIC_ECHO_TIMEOUT - Distance is too big or wave is scattered
- */
-esp_err_t ultrasonic_measure(const ultrasonic_sensor_t *dev, float max_distance, float *distance);
-
-/**
  * @brief Measure distance in centimeters
  *
  * @param dev Pointer to the device descriptor
@@ -107,10 +91,6 @@ esp_err_t ultrasonic_measure(const ultrasonic_sensor_t *dev, float max_distance,
  *         - ::ESP_ERR_ULTRASONIC_ECHO_TIMEOUT - Distance is too big or wave is scattered
  */
 esp_err_t ultrasonic_measure_cm(const ultrasonic_sensor_t *dev, uint32_t max_distance, uint32_t *distance);
-
-#ifdef __cplusplus
-}
-#endif
 
 /**@}*/
 
