@@ -26,6 +26,8 @@ $ENV{IDF_PATH}/components/esp_adc/deprecated/include
 "includes"
 "../utils"
 "../externals"
+"../pub"
+"../router"
 )
 
 register_component()

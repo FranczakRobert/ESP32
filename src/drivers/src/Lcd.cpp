@@ -8,7 +8,7 @@
 #define I2C_MASTER_TIMEOUT_MS       1000
 
 
-Lcd::Lcd()
+Lcd::Lcd(Router &refRouter) : router(refRouter)
 {
     if(ESP_OK == i2c_master_init())
     {
@@ -20,6 +20,8 @@ Lcd::Lcd()
     }
 
     lcd_clear();
+	usleep(10000);
+	startThread();
 }
 
 Lcd::~Lcd()
@@ -119,11 +121,18 @@ esp_err_t Lcd::i2c_master_init()
     return i2c_driver_install(I2C_NUM_0, conf.mode, 0, 0, 0);
 }
 
-void Lcd::myDemo()
+void Lcd::run()
 {
+	uint32_t data = router.sendDataFromRouterToComponent();
+	if(data < 10)
+	{
+		lcd_put_cur(1,11);
+		lcd_send_string(" ");
+	}
+	sprintf(buffer, "Value: %ld",data);
     lcd_put_cur(0,2);
-    lcd_send_string("Hello Robert!");
+    lcd_send_string("Received Data");
     lcd_put_cur(1,3);
-    lcd_send_string("From ESP32");
+    lcd_send_string(buffer);
     lcd_put_cur(1,17);
 }

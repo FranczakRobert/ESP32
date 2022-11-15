@@ -6,6 +6,7 @@
         "mutex": "cpp",
         "random": "cpp",
         "thread": "cpp",
-        "*.inc": "cpp"
+        "*.inc": "cpp",
+        "iterator": "cpp"
     }
 }

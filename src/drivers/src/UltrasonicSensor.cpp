@@ -5,7 +5,7 @@
 #define TRIGGER_GPIO 5
 #define ECHO_GPIO 18
 #define DIVISOR_CM 58
-UltrasonicSensor::UltrasonicSensor(){init(); startThread();}
+UltrasonicSensor::UltrasonicSensor(Router &refRouter) : router(refRouter){init(); startThread();}
 UltrasonicSensor::~UltrasonicSensor(){stopThread();}
 
 void UltrasonicSensor::init()
@@ -40,8 +40,11 @@ void UltrasonicSensor::run()
         //     }
         // }
         // else
+        dataTuSend = distance/100;
         if(distance/100 < 200)
             printf("Distance: %lu cm\n", distance/100);
 
         vTaskDelay(pdMS_TO_TICKS(500));
+        if(dataTuSend < 30)
+            router.sendDataToRouter(dataTuSend);
 }

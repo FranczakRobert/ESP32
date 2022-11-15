@@ -5,6 +5,7 @@
 #include <ultrasonic.hpp>
 #include <esp_err.h>
 #include "Thread.hpp"
+#include "Router.hpp"
 
 #ifndef ULTRASONICSENSOR_HPP
 #define ULTRASONICSENSOR_HPP
@@ -14,9 +15,12 @@ class UltrasonicSensor : public Thread
 private:
     ultrasonic_sensor_t sensor;
     void init();
+
+    Router &router;
+    uint32_t dataTuSend = 0;
     
 public:
-    UltrasonicSensor();
+    UltrasonicSensor(Router &refRouter);
     ~UltrasonicSensor();
 
     void virtual run();
