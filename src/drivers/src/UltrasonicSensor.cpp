@@ -20,7 +20,7 @@ void UltrasonicSensor::init()
 void UltrasonicSensor::run()
 {
         uint32_t distance;
-        esp_err_t res = ultrasonic_measure_raw(&sensor, MAX_DISTANCE_CM * DIVISOR_CM, &distance);
+        esp_err_t res = ultrasonic_measure_cm(&sensor, MAX_DISTANCE_CM * DIVISOR_CM, &distance);
         // if (res != ESP_OK)
         // {
         //     printf("Error %d: ", res);
@@ -40,9 +40,9 @@ void UltrasonicSensor::run()
         //     }
         // }
         // else
-        dataTuSend = distance/100;
-        if(distance/100 < 200)
-            printf("Distance: %lu cm\n", distance/100);
+        dataTuSend = distance;
+        // if(distance < 200)
+        //     printf("Distance: %lu cm\n", distance);
 
         vTaskDelay(pdMS_TO_TICKS(500));
         if(dataTuSend < 30)
